@@ -1,0 +1,10 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int n=s.nextInt();boolean ok=true;
+  for(int i=1;i<=n;i++)
+   if((s.nextInt()+9)/10!=(i+9)/10)ok=false;
+  System.out.print(ok?"Yes":"No");
+ }
+}
