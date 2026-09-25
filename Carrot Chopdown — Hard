@@ -1,0 +1,27 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int t=s.nextInt();
+  while(t-->0){
+   int n=s.nextInt(),m=s.nextInt();
+   int[] f=new int[m+1],ge=new int[m+2];
+   long total=0;
+   while(n-->0){int x=s.nextInt();f[x]++;total+=x;}
+   for(int i=m;i>0;i--)ge[i]=ge[i+1]+f[i];
+   for(int k=1;k<=m;k++){
+    long lim=k>=31?Long.MAX_VALUE:1L<<k,ans=total;
+    if(lim<=m){
+     ans=0;
+     for(int x=1;x*lim<=m;x++){
+      long q=0;
+      for(long j=1;j<lim&&j*x<=m;j++)q+=ge[(int)(j*x)];
+      if(lim*x<=m)q+=f[(int)(lim*x)];
+      ans=Math.max(ans,q);
+     }
+    }
+    System.out.print(ans+(k==m?"\n":" "));
+   }
+  }
+ }
+}
