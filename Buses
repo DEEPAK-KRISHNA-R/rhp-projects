@@ -1,0 +1,28 @@
+
+import java.io.*;
+import java.util.*;
+
+class Main{
+ static final long MOD=1000000007L;
+ static class B{
+  long l,r;
+  B(long l,long r){this.l=l;this.r=r;}
+ }
+ public static void main(String[]z)throws Exception{
+  Scanner s=new Scanner(System.in);
+  long n=s.nextLong();
+  int m=s.nextInt();
+  B[] a=new B[m];
+  long[] p=new long[m+1];
+  for(int i=0;i<m;i++)a[i]=new B(s.nextLong(),s.nextLong());
+  Arrays.sort(a,(x,y)->Long.compare(x.r,y.r));
+  TreeMap<Long,Long> dp=new TreeMap<>();
+  dp.put(0L,1L);
+  for(B x:a){
+   Long v=dp.floorEntry(x.l)==null?0:dp.floorEntry(x.l).getValue();
+   long old=dp.getOrDefault(x.r,0L);
+   dp.put(x.r,(old+v)%MOD);
+  }
+  System.out.print(dp.getOrDefault(n,0L));
+ }
+}
