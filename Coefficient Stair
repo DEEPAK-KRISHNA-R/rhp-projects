@@ -1,0 +1,26 @@
+import java.util.*;
+class Main{
+ static int n,k;
+ static int[] a;
+ static StringBuilder o=new StringBuilder();
+ static void f(int i,int r){
+  if(i==n){
+   if(r%n==0){
+    a[i-1]=r/n;
+    for(int x:a)o.append(x).append(' ');
+    o.append('\n');
+   }
+   return;
+  }
+  for(int x=0;x<=r/i;x++){
+   a[i-1]=x;
+   f(i+1,r-i*x);
+  }
+ }
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  n=s.nextInt();k=s.nextInt();a=new int[n];
+  f(1,k);
+  System.out.print(o);
+ }
+}
