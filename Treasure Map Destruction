@@ -1,0 +1,30 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int t=s.nextInt();
+  while(t-->0){
+   int n=s.nextInt();
+   int[] a=new int[n],d=new int[n+1];
+   for(int i=0;i<n;i++)a[i]=s.nextInt();
+   for(int i=0;i<n;i++)if(a[i]>0){
+    d[Math.max(0,i-a[i]+1)]++;
+    d[Math.min(n,i+a[i])]--;
+   }
+   boolean[] ban=new boolean[n];
+   int q=0;
+   for(int i=0;i<n;i++){q+=d[i];ban[i]=q>0;}
+   boolean ok=true;
+   for(int i=0;i<n;i++)if(a[i]>=0){
+    boolean x=i-a[i]>=0&&!ban[i-a[i]];
+    boolean y=i+a[i]<n&&!ban[i+a[i]];
+    if(!x&&!y){ok=false;break;}
+   }
+   if(!ok)System.out.println("-1");
+   else{
+    for(boolean x:ban)System.out.print(x?'0':'1');
+    System.out.println();
+   }
+  }
+ }
+}
