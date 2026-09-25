@@ -1,0 +1,13 @@
+import java.util.*;
+class Main{
+ static int g(int a,int b){return b==0?a:g(b,a%b);}
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int t=s.nextInt();
+  while(t-->0){
+   int n=s.nextInt(),a=s.nextInt(),x=a;
+   for(int i=1;i<n;i++)a=s.nextInt();
+   System.out.println(g(x,a));
+  }
+ }
+}
