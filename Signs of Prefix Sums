@@ -1,0 +1,24 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int t=s.nextInt(),I=1_000_000_000;
+  while(t-->0){
+   int n=s.nextInt();
+   String q=s.next();
+   int[][] d=new int[n+1][7];
+   for(int[] a:d)Arrays.fill(a,I);
+   d[0][3]=0;
+   for(int i=0;i<n;i++){
+    int l=q.charAt(i)=='-'?0:q.charAt(i)=='0'?3:4;
+    int r=q.charAt(i)=='-'?2:q.charAt(i)=='0'?3:6;
+    for(int j=0;j<7;j++)if(d[i][j]<I)
+     for(int k=l;k<=r;k++)if(k!=j)
+      d[i+1][k]=Math.min(d[i+1][k],Math.max(d[i][j],Math.abs(k-j)));
+   }
+   int a=I;
+   for(int x:d[n])a=Math.min(a,x);
+   System.out.println(a==I?-1:a);
+  }
+ }
+}
