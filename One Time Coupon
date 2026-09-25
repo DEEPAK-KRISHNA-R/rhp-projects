@@ -1,0 +1,23 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int t=s.nextInt();
+  while(t-->0){
+   int n=s.nextInt();
+   long base=0,min=Long.MAX_VALUE;
+   long[] d=new long[n];
+   for(int i=0;i<n;i++){
+    long a=s.nextLong(),b=s.nextLong();
+    base+=a;min=Math.min(min,a);d[i]=b-a;
+   }
+   Arrays.sort(d);
+   long cur=base,ans=base;
+   for(int k=1;k<=n;k++){
+    cur+=d[k-1];
+    ans=Math.min(ans,cur+Math.max(0,2L*k-n)*min);
+   }
+   System.out.println(ans);
+  }
+ }
+}
