@@ -1,0 +1,14 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int t=s.nextInt();
+  while(t-->0){
+   long x=s.nextLong(),y=s.nextLong(),k=s.nextLong(),ans=0;
+   long q=Math.min(y,k);
+   for(long i=0;i<q;i++)ans+=(y+i)%(x+i);
+   if(k>y)ans+=(k-y)*(y-x);
+   System.out.println(ans);
+  }
+ }
+}
