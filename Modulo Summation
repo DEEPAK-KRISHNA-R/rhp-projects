@@ -1,0 +1,13 @@
+import java.util.*;
+class Main{
+ public static void main(String[]z){
+  Scanner s=new Scanner(System.in);
+  int n=s.nextInt();
+  long r=0;
+  while(n-->0){
+   long x=s.nextLong();
+   r+=x-1;
+  }
+  System.out.print(r);
+ }
+}
